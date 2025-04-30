@@ -14,20 +14,27 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      background-color: #fdfdfd;
-      color: #222;
-      background:
-        conic-gradient(from 90deg at var(--l) var(--l), transparent 25%, var(--c) 0%)
-          calc(-1 * var(--o)) calc(-1 * var(--o)) / var(--d) var(--d),
-        linear-gradient(45deg, transparent calc(50% - var(--o)), var(--c) 0 calc(50% + var(--o)), transparent 0)
-          0 0 / calc(2 * var(--d)) calc(2 * var(--d)),
-        linear-gradient(-45deg, transparent calc(50% - var(--o)), var(--c) 0 calc(50% + var(--o)), transparent 0)
-          0 0 / calc(2 * var(--d)) calc(2 * var(--d));
+        position: relative;
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        color: #222;
+
+        --c: gainsboro;
+        --d: 1em;
+        --l: 1px;
+        --o: calc(0.5 * var(--l));
+
+        background:
+            conic-gradient(from 90deg at var(--l) var(--l), transparent 25%, var(--c) 0%)
+            calc(-1 * var(--o)) calc(-1 * var(--o)) / var(--d) var(--d),
+            linear-gradient(45deg, transparent calc(50% - var(--o)), var(--c) 0 calc(50% + var(--o)), transparent 0)
+            0 0 / calc(2 * var(--d)) calc(2 * var(--d)),
+            linear-gradient(-45deg, transparent calc(50% - var(--o)), var(--c) 0 calc(50% + var(--o)), transparent 0)
+            0 0 / calc(2 * var(--d)) calc(2 * var(--d));
     }
+
 
     body::before {
       content: "";
