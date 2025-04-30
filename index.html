@@ -2,17 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RH</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: white;
-        opacity: 0.95;
-        pointer-events: none;
-        z-index: -1;
+    :root {
+      --c: gainsboro;
+      --d: 1em;
+      --l: 1px;
+      --o: calc(0.5 * var(--l));
     }
 
     body {
@@ -22,34 +20,25 @@
       padding: 20px;
       background-color: #fdfdfd;
       color: #222;
+      background:
+        conic-gradient(from 90deg at var(--l) var(--l), transparent 25%, var(--c) 0%)
+          calc(-1 * var(--o)) calc(-1 * var(--o)) / var(--d) var(--d),
+        linear-gradient(45deg, transparent calc(50% - var(--o)), var(--c) 0 calc(50% + var(--o)), transparent 0)
+          0 0 / calc(2 * var(--d)) calc(2 * var(--d)),
+        linear-gradient(-45deg, transparent calc(50% - var(--o)), var(--c) 0 calc(50% + var(--o)), transparent 0)
+          0 0 / calc(2 * var(--d)) calc(2 * var(--d));
     }
-    
-    body {
-        --c: gainsboro;     /* grid line color */
-        --d: 1em;            /* grid cell size */
-        --l: 1px;            /* line thickness */
-        --o: calc(0.5 * var(--l));
 
-        background:
-            /* vertical + horizontal lines */
-            conic-gradient(from 90deg at var(--l) var(--l),
-            transparent 25%, var(--c) 0%) 
-            calc(-1 * var(--o)) calc(-1 * var(--o)) / var(--d) var(--d),
-
-            /* main diagonal */
-            linear-gradient(45deg,
-            transparent calc(50% - var(--o)),
-            var(--c) 0 calc(50% + var(--o)),
-            transparent 0)
-            0 0 / calc(2 * var(--d)) calc(2 * var(--d)),
-
-            /* secondary diagonal */
-            linear-gradient(-45deg,
-            transparent calc(50% - var(--o)),
-            var(--c) 0 calc(50% + var(--o)),
-            transparent 0)
-            0 0 / calc(2 * var(--d)) calc(2 * var(--d));
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: white;
+      opacity: 0.95;
+      pointer-events: none;
+      z-index: -1;
     }
+
     h1 {
       text-align: center;
       margin-bottom: 40px;
@@ -98,14 +87,29 @@
       font-size: 0.95em;
       color: #555;
     }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 24px;
+      }
+      .card-content {
+        padding: 12px;
+      }
+      .card-title {
+        font-size: 1.1em;
+      }
+      .card-description {
+        font-size: 0.9em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
   </style>
 </head>
 <body>
-
   <h1>My Projects</h1>
-
   <div class="grid">
-
     <a href="https://boboter.github.io/x-percent-of/" class="card">
         <img src="img/x_percent.png" alt="X% of Preview">
         <div class="card-content">
@@ -115,27 +119,15 @@
           </div>
         </div>
     </a>
-
-    <!-- Weitere Tools folgen hier in gleicher Struktur -->
-    <!--
-    <a href="another-tool/" class="card">
-      <img src="img/another-cover.jpg" alt="Another Tool">
-      <div class="card-content">
-        <div class="card-title">Another Tool</div>
-        <div class="card-description">Kurze Beschreibung des Tools oder Spiels.</div>
-      </div>
-    </a>
-    -->
-
   </div>
-    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
-    <script>
+  <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+  <script>
     kofiWidgetOverlay.draw('boboter', {
-    'type': 'floating-chat',
-    'floating-chat.donateButton.text': 'Tip Me',
-    'floating-chat.donateButton.background-color': '#fcbf47',
-    'floating-chat.donateButton.text-color': '#323842'
+      'type': 'floating-chat',
+      'floating-chat.donateButton.text': 'Tip Me',
+      'floating-chat.donateButton.background-color': '#fcbf47',
+      'floating-chat.donateButton.text-color': '#323842'
     });
-    </script>
+  </script>
 </body>
 </html>
